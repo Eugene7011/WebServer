@@ -27,7 +27,6 @@ public class Server {
             OutputStream outputStream = socket.getOutputStream();
             outputStream.write(echoMessage.getBytes());
 
-            //serverSocket.close();
         }
     }
 
