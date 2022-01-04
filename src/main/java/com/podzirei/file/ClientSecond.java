@@ -6,8 +6,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
-
+public class ClientSecond {
     public static void main(String[] args) throws IOException {
 
         System.out.println("Please enter your message to Server");

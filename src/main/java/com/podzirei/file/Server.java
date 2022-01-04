@@ -10,21 +10,25 @@ public class Server {
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(3000);
-        Socket socket = serverSocket.accept();
 
-        InputStream inputStream = socket.getInputStream();
+        while(true){
+            Socket socket = serverSocket.accept();
 
-        byte[] buffer = new byte[100];
+            InputStream inputStream = socket.getInputStream();
 
-        int count = inputStream.read(buffer);
+            byte[] buffer = new byte[100];
 
-        String received = new String(buffer, 0, count);
+            int count = inputStream.read(buffer);
 
-        String echoMessage = "Echo: " + received;
+            String received = new String(buffer, 0, count);
 
-        OutputStream outputStream = socket.getOutputStream();
-        outputStream.write(echoMessage.getBytes());
+            String echoMessage = "Echo: " + received;
 
+            OutputStream outputStream = socket.getOutputStream();
+            outputStream.write(echoMessage.getBytes());
+
+            //serverSocket.close();
+        }
     }
 
 }
