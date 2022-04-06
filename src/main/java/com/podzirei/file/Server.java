@@ -11,22 +11,22 @@ public class Server {
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(3000);
 
-        while(true){
+        while (true) {
             Socket socket = serverSocket.accept();
+            try (InputStream inputStream = socket.getInputStream();
+                 OutputStream outputStream = socket.getOutputStream()) {
 
-            InputStream inputStream = socket.getInputStream();
+                byte[] buffer = new byte[100];
+                int count = inputStream.read(buffer);
 
-            byte[] buffer = new byte[100];
+                String received = new String(buffer, 0, count);
+                System.out.println("Message from client: " + received);
+                System.out.println("Adding prefix ...");
 
-            int count = inputStream.read(buffer);
-
-            String received = new String(buffer, 0, count);
-
-            String echoMessage = "Echo: " + received;
-
-            OutputStream outputStream = socket.getOutputStream();
-            outputStream.write(echoMessage.getBytes());
-
+                String echoMessage = "Echo: " + received;
+                outputStream.write(echoMessage.getBytes());
+                System.out.println("This message was sent to client " + echoMessage);
+            }
         }
     }
 
