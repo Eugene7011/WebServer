@@ -14,10 +14,6 @@ public class ResourceReader {
         this.webappPath = webappPath;
     }
 
-    public String getWebappPath() {
-        return webappPath;
-    }
-
     public byte[] readResource(String uri) throws IOException {
         File resource = new File(webappPath, uri);
         inspectPathIsExisted(resource);

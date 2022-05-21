@@ -1,10 +1,8 @@
 package com.podzirei.webserver.resource;
 
-import com.podzirei.webserver.entity.ServerException;
 import org.junit.jupiter.api.*;
 
 import java.io.*;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
